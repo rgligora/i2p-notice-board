@@ -1,11 +1,11 @@
-<!-- /path/to/your/post-it-board/public/index.html -->
+<!-- /path/to/your/i2p-notice-board/html/index.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post-It Board</title>
+    <title>Notice Board</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -47,7 +47,7 @@
             flex-wrap: wrap;
         }
 
-        .post-it {
+        .notice {
             background-color: #fff;
             border: 1px solid #ddd;
             padding: 10px;
@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <h1>Post-It Board</h1>
+    <h1>I2P Notice Board</h1>
     <form id="postForm">
         <textarea id="messageInput" placeholder="Type your message"></textarea>
         <button type="button" onclick="postMessage()">Post</button>
@@ -98,7 +98,7 @@
             messages.forEach(message => {
                 const newMessageDiv = document.createElement('div');
                 newMessageDiv.innerText = message;
-                newMessageDiv.classList.add('post-it');
+                newMessageDiv.classList.add('notice');
                 messagesDiv.appendChild(newMessageDiv);
             });
         }
