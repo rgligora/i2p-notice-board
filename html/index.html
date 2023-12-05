@@ -1,0 +1,110 @@
+<!-- /path/to/your/post-it-board/public/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-It Board</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #postForm {
+            margin-bottom: 20px;
+        }
+
+        #messageInput {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #messages {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .post-it {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Post-It Board</h1>
+    <form id="postForm">
+        <textarea id="messageInput" placeholder="Type your message"></textarea>
+        <button type="button" onclick="postMessage()">Post</button>
+    </form>
+    <div id="messages"></div>
+
+    <script>
+        async function postMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+
+            // Post the message to the server
+            await fetch('/api/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            });
+
+            // Clear the input field
+            messageInput.value = '';
+
+            // Fetch and display all messages
+            fetchMessages();
+        }
+
+        async function fetchMessages() {
+            const messagesDiv = document.getElementById('messages');
+
+            // Fetch messages from the server
+            const response = await fetch('/api/messages');
+            const messages = await response.json();
+
+            // Display messages on the board
+            messagesDiv.innerHTML = '';
+            messages.forEach(message => {
+                const newMessageDiv = document.createElement('div');
+                newMessageDiv.innerText = message;
+                newMessageDiv.classList.add('post-it');
+                messagesDiv.appendChild(newMessageDiv);
+            });
+        }
+
+        // Fetch messages when the page loads
+        fetchMessages();
+    </script>
+</body>
+</html>
