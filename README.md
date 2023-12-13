@@ -15,3 +15,25 @@ This project is a simple Notice Board eepsite aplication that allows users to po
 
    ```bash
    git clone https://github.com/rgligora/i2p-notice-board.git
+
+2. **Navigate to the project directory:**
+    ```bash
+   cd i2p-notice-board
+
+3. **Install Node.js dependencies:**
+   ```bash
+   npm install
+
+4. **Start the Node.js server:**
+   ```bash
+   node server.js
+
+5. **Create a symbolic link to this configuration file in the sites-enabled directory:**
+   ```bash
+   sudo ln -s ./nginx/notice-board /etc/nginx/sites-enabled
+
+6. **Restart Nginx to apply the changes:**
+   ```bash
+   sudo service nginx restart
+
+
