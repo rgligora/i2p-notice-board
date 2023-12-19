@@ -11,9 +11,10 @@ This project is a simple Notice Board eepsite aplication that allows users to po
 
 ### Installation
 
-1. **Clone the repository:**
+1. **Clone the repository @ /var/www/ :**
 
    ```bash
+   cd /var/www/
    git clone https://github.com/rgligora/i2p-notice-board.git
 
 2. **Navigate to the project directory:**
@@ -33,7 +34,7 @@ This project is a simple Notice Board eepsite aplication that allows users to po
    New terminal tab
    ```bash
    cd i2p-notice-board
-   sudo ln -s ./nginx/notice-board /etc/nginx/sites-enabled
+   sudo ln -s /var/www/i2p-notice-board/nginx/notice-board.conf /etc/nginx/sites-enabled
 
 6. **Restart Nginx to apply the changes:**
    ```bash
