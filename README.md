@@ -22,6 +22,7 @@ This project is a simple Notice Board eepsite aplication that allows users to po
 
 3. **Install Node.js dependencies:**
    ```bash
+   cd node
    npm install
 
 4. **Start the Node.js server:**
@@ -29,7 +30,9 @@ This project is a simple Notice Board eepsite aplication that allows users to po
    node server.js
 
 5. **Create a symbolic link to this configuration file in the sites-enabled directory:**
+   New terminal tab
    ```bash
+   cd i2p-notice-board
    sudo ln -s ./nginx/notice-board /etc/nginx/sites-enabled
 
 6. **Restart Nginx to apply the changes:**
